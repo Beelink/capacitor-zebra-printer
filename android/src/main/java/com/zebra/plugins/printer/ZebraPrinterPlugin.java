@@ -13,14 +13,12 @@ import java.net.Socket;
 @CapacitorPlugin(name = "ZebraPrinter")
 public class ZebraPrinterPlugin extends Plugin {
 
-    private ZebraPrinter implementation = new ZebraPrinter();
-
     @PluginMethod
     public void echo(PluginCall call) {
         String value = call.getString("value");
 
         JSObject ret = new JSObject();
-        ret.put("value", implementation.echo(value));
+        ret.put("value", value);
         call.resolve(ret);
     }
 
@@ -40,8 +38,8 @@ public class ZebraPrinterPlugin extends Plugin {
             try {
                 System.out.println("Printing now...");
                 clientSocket = new Socket();
-								clientSocket.setSoTimeout(30000);
-								clientSocket.connect(new InetSocketAddress(ip, port), 30000);
+                clientSocket.setSoTimeout(30000);
+                clientSocket.connect(new InetSocketAddress(ip, port), 30000);
                 outToServer = new DataOutputStream(clientSocket.getOutputStream());
                 outToServer.writeBytes(zpl);
                 outToServer.close();
@@ -64,7 +62,7 @@ public class ZebraPrinterPlugin extends Plugin {
 
         if (!error) {
             JSObject ret = new JSObject();
-						ret.put("success", true);
+            ret.put("success", true);
             ret.put("message", "Succesfully sent to printer");
             call.success(ret);
         }
