@@ -1,7 +1,7 @@
 {
-  "name": "ionic-zebra-printer",
+  "name": "capacitor-zebra-printer",
   "version": "0.0.1",
-  "description": "Ionic zebra printer",
+  "description": "Capacitor Zebra Printer",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -17,15 +17,19 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/levidousseaux/zebra-printer-plugin.git"
+    "url": "git+https://github.com/Beelink/capacitor-zebra-printer.git"
   },
   "bugs": {
-    "url": "https://github.com/levidousseaux/zebra-printer-plugin/issues"
+    "url": "https://github.com/Beelink/capacitor-zebra-printer/issues"
   },
   "keywords": [
     "capacitor",
     "plugin",
-    "native"
+    "native",
+    "ionic",
+    "cordova",
+    "zebra",
+    "printer"
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
