@@ -1,8 +1,10 @@
 # capacitor-zebra-printer
 
-Capacitor Zebra Printer is a fork of [ionic-zebra-printer](https://github.com/levidousseaux/ionic-zebra-printer).
-## Fork changes
-- none
+Capacitor Zebra Printer is a fork of [ionic-zebra-printer](https://github.com/levidousseaux/ionic-zebra-printer). You can use this module to send ZPL messages to Zebra printers.
+###### Fork changes:
+
+- Add fetch timeout
+- Print response typization
 
 ## Install
 ```bash
