@@ -1,11 +1,19 @@
-# ionic-zebra-printer
+# capacitor-zebra-printer
 
-Ionic zebra printer
+Capacitor Zebra Printer is a fork of [ionic-zebra-printer](https://github.com/levidousseaux/ionic-zebra-printer).
+## Fork changes
+- none
 
 ## Install
-
 ```bash
-npm install ionic-zebra-printer
+yarn add capacitor-zebra-printer
+```
+or
+```bash
+npm install capacitor-zebra-printer
+```
+and finally
+```bash
 npx cap sync
 ```
 
