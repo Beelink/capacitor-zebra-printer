@@ -47,7 +47,7 @@ echo(options: { value: string; }) => any
 ### print(...)
 
 ```typescript
-print(options: { ip: string; port: number; zpl: string; }) => any
+print(options: Options) => any
 ```
 
 | Param         | Type                                                    |

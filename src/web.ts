@@ -1,5 +1,8 @@
 import { WebPlugin } from '@capacitor/core';
+
 import type { ZebraPrinterPlugin } from './definitions';
+import type Options from './types/options';
+import fetchWithTimeout from './utils/fetchWithTimeout';
 
 export class ZebraPrinterWeb extends WebPlugin implements ZebraPrinterPlugin {
   async echo(options: { value: string }): Promise<{ value: string }> {
@@ -7,19 +10,18 @@ export class ZebraPrinterWeb extends WebPlugin implements ZebraPrinterPlugin {
     return options;
   }
 
-  async print(options: { ip: string, port: number, zpl: string }): Promise<{ value: string }> {
-
-    var request = new Request(`http://${options.ip}:${options.port}`, {
+  async print(options: Options): Promise<{ value: string }> {
+    const request = new Request(`http://${options.ip}:${options.port}`, {
       method: 'POST',
       mode: 'no-cors',
       cache: 'no-cache',
-      body: options.zpl
+      body: options.zpl,
     });
-    return await fetch(request)
+    return await fetchWithTimeout(request)
       .then(() => {
-        return { value: "print succesfully executed" }
+        return { value: 'print succesfully executed' };
       })
-      .catch((error) => {
+      .catch(error => {
         throw Error(error);
       });
   }
