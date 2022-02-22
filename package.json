@@ -1,6 +1,6 @@
 {
   "name": "capacitor-zebra-printer",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "Capacitor Zebra Printer",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
