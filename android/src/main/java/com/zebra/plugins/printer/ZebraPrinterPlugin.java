@@ -9,6 +9,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
 
 @CapacitorPlugin(name = "ZebraPrinter")
 public class ZebraPrinterPlugin extends Plugin {
@@ -38,13 +39,14 @@ public class ZebraPrinterPlugin extends Plugin {
             try {
                 System.out.println("Printing now...");
                 clientSocket = new Socket();
-                clientSocket.setSoTimeout(30000);
-                clientSocket.connect(new InetSocketAddress(ip, port), 30000);
+                SocketAddress socketAddress = new InetSocketAddress(ip, port);
+                clientSocket.connect(socketAddress, 30000);
                 outToServer = new DataOutputStream(clientSocket.getOutputStream());
                 outToServer.writeBytes(zpl);
-                outToServer.close();
                 System.out.println("send the following string: " + zpl);
-                clientSocket.close();
+            } catch (Exception e) {
+                System.out.println("Connection error");
+                error = true;
             } finally {
                 if (clientSocket != null) {
                     outToServer.close();
@@ -60,11 +62,14 @@ public class ZebraPrinterPlugin extends Plugin {
         System.out.println("------------------------------------------------------------");
         System.out.println("end");
 
-        if (!error) {
-            JSObject ret = new JSObject();
+        JSObject ret = new JSObject();
+        if (error) {
+            ret.put("success", false);
+            ret.put("message", "Something went wrong");
+        } else {
             ret.put("success", true);
-            ret.put("message", "Succesfully sent to printer");
-            call.success(ret);
+            ret.put("message", "Successfully sent to printer");
         }
+        call.resolve(ret);
     }
 }
