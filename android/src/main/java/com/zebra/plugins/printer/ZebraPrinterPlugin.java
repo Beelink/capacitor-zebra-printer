@@ -49,14 +49,14 @@ public class ZebraPrinterPlugin extends Plugin {
                 error = true;
             } finally {
                 if (clientSocket != null) {
-                    outToServer.close();
                     clientSocket.close();
+                }
+                if (outToServer != null) {
+                    outToServer.close();
                 }
             }
         } catch (IOException e1) {
             System.out.println("Cannot print label on this printer : " + ip + ":" + port);
-            System.out.println(e1.getMessage());
-            call.reject(e1.getMessage());
             error = true;
         }
         System.out.println("------------------------------------------------------------");

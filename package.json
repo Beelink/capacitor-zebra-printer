@@ -1,6 +1,6 @@
 {
   "name": "capacitor-zebra-printer",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Capacitor Zebra Printer - Send ZPL messages",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
