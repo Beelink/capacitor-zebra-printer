@@ -29,9 +29,6 @@ public class ZebraPrinterPlugin extends Plugin {
         int port = call.getInt("port");
         String zpl = call.getString("zpl");
 
-        System.out.println("start");
-        System.out.println("------------------------------------------------------------");
-
         Boolean error = false;
         try {
             Socket clientSocket = null;
@@ -59,17 +56,11 @@ public class ZebraPrinterPlugin extends Plugin {
             System.out.println("Cannot print label on this printer : " + ip + ":" + port);
             error = true;
         }
-        System.out.println("------------------------------------------------------------");
-        System.out.println("end");
 
-        JSObject ret = new JSObject();
         if (error) {
-            ret.put("success", false);
-            ret.put("message", "Something went wrong");
+            call.reject("Something went wrong");
         } else {
-            ret.put("success", true);
-            ret.put("message", "Successfully sent to printer");
+            call.resolve();
         }
-        call.resolve(ret);
     }
 }

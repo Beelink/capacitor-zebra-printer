@@ -1,6 +1,6 @@
 {
   "name": "capacitor-zebra-printer",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Capacitor Zebra Printer - Send ZPL messages",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -11,11 +11,14 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "IonicZebraPrinter.podspec"
+    "CapacitorZebraPrinter.podspec"
   ],
   "author": "Levi Melo",
   "contributors": [
-    "Eugene Volynko"
+    {
+      "name": "Eugene Volynko",
+      "url": "https://github.com/Beelink"
+    }
   ],
   "license": "MIT",
   "repository": {
@@ -32,7 +35,9 @@
     "ionic",
     "cordova",
     "zebra",
-    "printer"
+    "printer",
+    "android",
+    "ios"
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
