@@ -2,8 +2,9 @@ import Foundation
 import Capacitor
 import SwiftSocket
 
-@objc(ZebraPrinterPlugin)
-public class ZebraPrinterPlugin: CAPPlugin {
+@objc(CapacitorZebraPrinterPlugin)
+public class CapacitorZebraPrinterPlugin: CAPPlugin {
+    private let implementation = CapacitorZebraPrinter()
 
     @objc func echo(_ call: CAPPluginCall) {
         let value = call.getString("value") ?? ""
@@ -24,15 +25,17 @@ public class ZebraPrinterPlugin: CAPPlugin {
                     case .success:
                         guard let data = client.read(1024*10)
                         else {
-                            call.resolve()
+                            call.resolve([
+                                "value": "success"
+                            ])
                             return
                         }
                     case .failure(let error):
-                        call.reject("Something went wrong")
+                        call.reject("error")
 
                 }
             case .failure(let error):
-                call.reject("Something went wrong")
+                call.reject("error")
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.zebra.plugins.printer;
+package com.beelink.plugins.capacitorzebraprinter;
 
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
@@ -11,8 +11,8 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
 
-@CapacitorPlugin(name = "ZebraPrinter")
-public class ZebraPrinterPlugin extends Plugin {
+@CapacitorPlugin(name = "CapacitorZebraPrinter")
+public class CapacitorZebraPrinterPlugin extends Plugin {
 
     @PluginMethod
     public void echo(PluginCall call) {
@@ -58,9 +58,11 @@ public class ZebraPrinterPlugin extends Plugin {
         }
 
         if (error) {
-            call.reject("Something went wrong");
+            call.reject("error");
         } else {
-            call.resolve();
+            JSObject ret = new JSObject();
+            ret.put("value", "success");
+            call.resolve(ret);
         }
     }
 }
